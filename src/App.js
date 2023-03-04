@@ -6,6 +6,7 @@ import {
   Link
 } from 'react-router-dom';
 import DashboardContainer from './containers/dashboard/DashboardContainer';
+import MoviesListContainer from './containers/movies/MoviesListContainer';
 import './style.css';
 
 export default class App extends Component {
@@ -19,10 +20,12 @@ export default class App extends Component {
           <div className="flex flex-row app-main">
             <div className="flex-column sidebar container">
               <Link to="/dashboard">Dashboard</Link>
+              <Link to="/list">List</Link>
             </div>
             <div className="app-body flex">
               <Routes>
                 <Route exact path="/dashboard" element={<DashboardContainer/>} />
+                <Route exact path="/list" element={<MoviesListContainer/>} />
               </Routes>
             </div>
           </div>

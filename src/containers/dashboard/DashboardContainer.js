@@ -3,8 +3,8 @@ import TableCustom from "../../components/Table";
 import Grid from '@mui/material/Grid';
 import { Box } from "@mui/material";
 import FilterByYear from "../../components/FilterByYear";
-import {useTranslation} from "react-i18next";
-import { getIntervalWinsMaxMin, getListWinnersByYear, getListYears, getTopStudios } from "../api/DashboardApi";
+import { useTranslation } from "react-i18next";
+import { getIntervalWinsMaxMin, getListWinnersByYear, getListYears, getTopStudios } from "./api/DashboardApi";
 
 const DashboardContainer = () => {
 
@@ -35,23 +35,23 @@ const DashboardContainer = () => {
         fetchData();
     }, [searchYear]);
 
-    const labelsListYears = [ { column: 'year', name: t('dashboard.listYears.year') }, 
-                              { column: 'winnerCount', name:  t('dashboard.listYears.winnerCount') }];
+    const labelsListYears = [{ column: 'year', name: t('dashboard.listYears.year') },
+    { column: 'winnerCount', name: t('dashboard.listYears.winnerCount') }];
 
-    const labelsTopStudios = [ { column: 'name', name: t('dashboard.topStudios.name') }, 
-                               { column: 'winCount', name:  t('dashboard.topStudios.winCount') }];
+    const labelsTopStudios = [{ column: 'name', name: t('dashboard.topStudios.name') },
+    { column: 'winCount', name: t('dashboard.topStudios.winCount') }];
 
-    const labelsInterval = [ { column: "producer", name: t('dashboard.intervalWinsMaxMin.producer') }, 
-                             { column: "interval", name: t('dashboard.intervalWinsMaxMin.interval') },
-                             { column: "previousWin", name: t('dashboard.intervalWinsMaxMin.previousWin') },
-                             { column: "followingWin", name: t('dashboard.intervalWinsMaxMin.followingWin') } ];
+    const labelsInterval = [{ column: "producer", name: t('dashboard.intervalWinsMaxMin.producer') },
+    { column: "interval", name: t('dashboard.intervalWinsMaxMin.interval') },
+    { column: "previousWin", name: t('dashboard.intervalWinsMaxMin.previousWin') },
+    { column: "followingWin", name: t('dashboard.intervalWinsMaxMin.followingWin') }];
 
     const rowsIntervalMax = (intervalWinsMaxMin.max ?? []).map(({ producer, interval, previousWin, followingWin }) => ({ producer, interval, previousWin, followingWin }));
     const rowsIntervalMin = (intervalWinsMaxMin.min ?? []).map(({ producer, interval, previousWin, followingWin }) => ({ producer, interval, previousWin, followingWin }));
 
-    const labelsListWinners = [ { column: 'id', name: t('dashboard.listWinners.id') }, 
-                                { column: 'year', name: t('dashboard.listWinners.year') },
-                                { column: 'title', name:  t('dashboard.listWinners.titleColumn') }];
+    const labelsListWinners = [{ column: 'id', name: t('dashboard.listWinners.id') },
+    { column: 'year', name: t('dashboard.listWinners.year') },
+    { column: 'title', name: t('dashboard.listWinners.titleColumn') }];
 
     return (
         <Fragment>
