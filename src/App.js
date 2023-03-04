@@ -14,7 +14,7 @@ export default class App extends Component {
       <Router>
         <div className="flex-column app-frame">
           <div className="flex-row align-center header container">
-            <Link to="/">Header</Link>
+            <h5>Frontend React Test</h5>
           </div>
           <div className="flex flex-row app-main">
             <div className="flex-column sidebar container">

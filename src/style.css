@@ -22,6 +22,7 @@ body {
   button,
   pre {
     margin: 8px;
+    color: #ffffff;
   }
   
   h1 code,
@@ -98,12 +99,12 @@ body {
   }
   
   .header {
-    background-color: #00ff8c;
+    background-color: #010a06;
   }
   
   .header a {
     margin: 8px;
-    color: #000;
+    color: #ffffff;
     font-size: 1.3rem;
     font-weight: 700;
   }
