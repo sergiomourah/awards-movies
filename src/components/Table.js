@@ -14,7 +14,7 @@ export default function TableCustom({ rows, labels }) {
         <TableHead>
           <TableRow>
           {labels.map((label, index) => (
-            <TableCell key={index} align="left">{label}</TableCell>
+            <TableCell key={index} align="left"><b>{label.name}</b></TableCell>
           ))}
           </TableRow>
         </TableHead>
@@ -25,7 +25,7 @@ export default function TableCustom({ rows, labels }) {
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               {labels.map((label, index) => (
-                <TableCell key={index} align="left">{row[label]}</TableCell>
+                <TableCell key={index} align="left">{row[label.column]}</TableCell>
               ))}
             </TableRow>
           ))}

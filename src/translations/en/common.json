@@ -1,0 +1,27 @@
+{
+    "dashboard": {
+        "listYears": {
+            "year": "Year",
+            "winnerCount": "Win Count",
+            "title": "List year with multiple winners"
+        },
+        "topStudios": {
+            "name": "Name",
+            "winCount": "Win Count",
+            "title": "Top 3 studios with winners"
+        },
+        "intervalWinsMaxMin": {
+            "producer": "Producer", 
+            "interval": "Interval", 
+            "previousWin": "Previous Year", 
+            "followingWin": "Following Year",
+            "title": "Producers with longest and shortest interval between wins"
+        },
+        "listWinners": {
+            "id": "Id",
+             "year": "Year",
+             "titleColumn": "Title",
+             "title": "List movie winners by year"
+        }
+    }
+}
