@@ -28,7 +28,9 @@
             "year": "Year",
             "titleColumn": "Title",
             "winner": "Winner?",
-            "title": "List movie winners by year"
+            "title": "List movie winners by year",
+            "true": "Yes",
+            "false": "No"
         }
     }
 }

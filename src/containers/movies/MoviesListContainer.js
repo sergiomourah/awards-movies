@@ -13,7 +13,7 @@ const MoviesListContainer = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            setListMovies(await getListMovies(undefined, '', ''))
+            setListMovies(await getListMovies(undefined, '', '', t))
         };
 
         fetchData();
