@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-import TableCustom from "../../components/Table";
+import TableCustom from "../../components/TableCustom";
 import Grid from '@mui/material/Grid';
 import { Box } from "@mui/material";
 import FilterByYear from "../../components/FilterByYear";
