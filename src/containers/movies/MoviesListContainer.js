@@ -10,19 +10,21 @@ const MoviesListContainer = () => {
     const [listMovies, setListMovies] = useState([]);
     const [page, setPage] = useState(1);
     const [totalElements, setTotalElements] = useState(0);
+    const [selectedYear, setSelectedYear] = useState('');
+    const [winnerSelected, setWinnerSelected] = useState('');
 
     const { t } = useTranslation('common');
 
     useEffect(() => {
         const fetchData = async () => {
-            const result = await getListMovies(page - 1, '', '')
+            const result = await getListMovies(page - 1, winnerSelected, selectedYear)
             const list = (result.data.content ?? []).map(({ id, year, title, winner }) => ({ id, year, title, winner: t(`dashboard.listMovies.${winner}`) }))
             setTotalElements(result.data.totalElements || 0)
             setListMovies(list)
         };
 
         fetchData();
-    }, [page, t]);
+    }, [page, selectedYear, winnerSelected, t]);
 
     const labelsListMovies = [{ column: 'id', name: t('dashboard.listMovies.id') },
     { column: 'year', name: t('dashboard.listMovies.year') },
@@ -42,7 +44,11 @@ const MoviesListContainer = () => {
                                      pagination={true} 
                                      page={page} 
                                      setPage={setPage} 
-                                     totalElements={totalElements}/>
+                                     totalElements={totalElements}
+                                     selectedYear={selectedYear}
+                                     setSelectedYear={setSelectedYear}
+                                     winnerSelected={winnerSelected} 
+                                     setWinnerSelected={setWinnerSelected}/>
                     </Grid>
                 </Grid>
             </Box>
