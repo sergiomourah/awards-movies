@@ -27,9 +27,9 @@ const MoviesListContainer = () => {
     }, [page, selectedYear, winnerSelected, t]);
 
     const labelsListMovies = [{ column: 'id', name: t('dashboard.listMovies.id') },
-    { column: 'year', name: t('dashboard.listMovies.year') },
-    { column: 'title', name: t('dashboard.listMovies.titleColumn') },
-    { column: 'winner', name: t('dashboard.listMovies.winner') }];
+                              { column: 'year', name: t('dashboard.listMovies.year') },
+                              { column: 'title', name: t('dashboard.listMovies.titleColumn') },
+                              { column: 'winner', name: t('dashboard.listMovies.winner') }];
 
     return (
         <Fragment>
@@ -39,16 +39,16 @@ const MoviesListContainer = () => {
                         <div className="flex-row align-center container">
                             <span><b>{t('dashboard.listMovies.title')}</b></span>
                         </div>
-                        <TableCustom rows={listMovies} 
-                                     labels={labelsListMovies} 
-                                     pagination={true} 
-                                     page={page} 
-                                     setPage={setPage} 
-                                     totalElements={totalElements}
-                                     selectedYear={selectedYear}
-                                     setSelectedYear={setSelectedYear}
-                                     winnerSelected={winnerSelected} 
-                                     setWinnerSelected={setWinnerSelected}/>
+                        <TableCustom rows={listMovies}
+                            labels={labelsListMovies}
+                            pagination={true}
+                            page={page}
+                            setPage={setPage}
+                            totalElements={totalElements}
+                            selectedYear={selectedYear}
+                            setSelectedYear={setSelectedYear}
+                            winnerSelected={winnerSelected}
+                            setWinnerSelected={setWinnerSelected} />
                     </Grid>
                 </Grid>
             </Box>

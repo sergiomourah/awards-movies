@@ -36,22 +36,22 @@ const DashboardContainer = () => {
     }, [searchYear]);
 
     const labelsListYears = [{ column: 'year', name: t('dashboard.listYears.year') },
-    { column: 'winnerCount', name: t('dashboard.listYears.winnerCount') }];
+                             { column: 'winnerCount', name: t('dashboard.listYears.winnerCount') }];
 
     const labelsTopStudios = [{ column: 'name', name: t('dashboard.topStudios.name') },
-    { column: 'winCount', name: t('dashboard.topStudios.winCount') }];
+                              { column: 'winCount', name: t('dashboard.topStudios.winCount') }];
 
     const labelsInterval = [{ column: "producer", name: t('dashboard.intervalWinsMaxMin.producer') },
-    { column: "interval", name: t('dashboard.intervalWinsMaxMin.interval') },
-    { column: "previousWin", name: t('dashboard.intervalWinsMaxMin.previousWin') },
-    { column: "followingWin", name: t('dashboard.intervalWinsMaxMin.followingWin') }];
+                            { column: "interval", name: t('dashboard.intervalWinsMaxMin.interval') },
+                            { column: "previousWin", name: t('dashboard.intervalWinsMaxMin.previousWin') },
+                            { column: "followingWin", name: t('dashboard.intervalWinsMaxMin.followingWin') }];
 
     const rowsIntervalMax = (intervalWinsMaxMin.max ?? []).map(({ producer, interval, previousWin, followingWin }) => ({ producer, interval, previousWin, followingWin }));
     const rowsIntervalMin = (intervalWinsMaxMin.min ?? []).map(({ producer, interval, previousWin, followingWin }) => ({ producer, interval, previousWin, followingWin }));
 
     const labelsListWinners = [{ column: 'id', name: t('dashboard.listWinners.id') },
-    { column: 'year', name: t('dashboard.listWinners.year') },
-    { column: 'title', name: t('dashboard.listWinners.titleColumn') }];
+                               { column: 'year', name: t('dashboard.listWinners.year') },
+                               { column: 'title', name: t('dashboard.listWinners.titleColumn') }];
 
     return (
         <Fragment>

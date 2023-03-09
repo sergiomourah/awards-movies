@@ -24,7 +24,6 @@ export default function TableCustom({ rows, labels, pagination = false, page, se
     setWinnerSelected(event.target.value);
   }
 
-
   return (
     <React.Fragment>
       <TableContainer component={Paper}>
