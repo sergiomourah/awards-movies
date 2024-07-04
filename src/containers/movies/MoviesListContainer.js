@@ -26,6 +26,10 @@ const MoviesListContainer = () => {
         fetchData();
     }, [page, selectedYear, winnerSelected, t]);
 
+    useEffect(() => {
+        setPage(1)
+    }, [selectedYear, winnerSelected]);
+
     const labelsListMovies = [{ column: 'id', name: t('dashboard.listMovies.id') },
                               { column: 'year', name: t('dashboard.listMovies.year') },
                               { column: 'title', name: t('dashboard.listMovies.titleColumn') },

@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   BrowserRouter as Router,
   Route,
   Routes,
-  Link
-} from 'react-router-dom';
-import DashboardContainer from './containers/dashboard/DashboardContainer';
-import MoviesListContainer from './containers/movies/MoviesListContainer';
-import './style.css';
+  Link,
+  Navigate,
+} from "react-router-dom";
+import DashboardContainer from "./containers/dashboard/DashboardContainer";
+import MoviesListContainer from "./containers/movies/MoviesListContainer";
+import "./style.css";
 
 export default class App extends Component {
   render() {
@@ -24,8 +25,13 @@ export default class App extends Component {
             </div>
             <div className="app-body flex">
               <Routes>
-                <Route exact path="/dashboard" element={<DashboardContainer/>} />
-                <Route exact path="/list" element={<MoviesListContainer/>} />
+                <Route exact path="/" element={<Navigate to="/dashboard" />} />
+                <Route
+                  exact
+                  path="/dashboard"
+                  element={<DashboardContainer />}
+                />
+                <Route exact path="/list" element={<MoviesListContainer />} />
               </Routes>
             </div>
           </div>
