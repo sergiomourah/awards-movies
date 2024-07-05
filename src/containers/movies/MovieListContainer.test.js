@@ -1,19 +1,19 @@
 import React from "react";
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
-import "@testing-library/jest-dom/extend-expect";
+import { render, screen, fireEvent, act } from "@testing-library/react";
 import MoviesListContainer from "./MoviesListContainer";
 import { getListMovies } from "./api/MoviesApi";
 
-jest.mock("./api/MoviesApi");
+jest.mock("react-i18next");
+jest.mock("./api/MoviesApi", () => ({
+  getListMovies: jest.fn(),
+}));
 
 const mockData = {
-  data: {
-    content: [
-      { id: 1, year: 2000, title: "Movie Title 1", winner: true },
-      { id: 2, year: 2001, title: "Movie Title 2", winner: false },
-    ],
-    totalElements: 2,
-  },
+  content: [
+    { id: 1, year: 2000, title: "Movie Title 1", winner: true },
+    { id: 2, year: 2001, title: "Movie Title 2", winner: false },
+  ],
+  totalElements: 2,
 };
 
 describe("MoviesListContainer", () => {
@@ -21,18 +21,19 @@ describe("MoviesListContainer", () => {
     getListMovies.mockResolvedValue(mockData);
   });
 
-  test("renders without crashing", () => {
+  test("renders without crashing", async () => {
     render(<MoviesListContainer />);
+    await act(async () => {
+      await getListMovies;
+    });
     expect(screen.getByText(/dashboard.listMovies.title/i)).toBeInTheDocument();
   });
 
   test("fetches and displays movies", async () => {
     render(<MoviesListContainer />);
 
-    await waitFor(() => {
-      expect(screen.getByText("Movie Title 1")).toBeInTheDocument();
-      expect(screen.getByText("Movie Title 2")).toBeInTheDocument();
-    });
+    expect(await screen.findByText("Movie Title 1")).toBeInTheDocument();
+    expect(await screen.findByText("Movie Title 2")).toBeInTheDocument();
   });
 
   test("filters movies by year", async () => {
@@ -42,10 +43,8 @@ describe("MoviesListContainer", () => {
       target: { value: "2000" },
     });
 
-    await waitFor(() => {
-      expect(screen.getByText("Movie Title 1")).toBeInTheDocument();
-      expect(screen.queryByText("Movie Title 2")).not.toBeInTheDocument();
-    });
+    expect(await screen.findByText("Movie Title 1")).toBeInTheDocument();
+    expect(screen.queryByText("Movie Title 2")).not.toBeInTheDocument();
   });
 
   test("filters movies by winner", async () => {
@@ -55,9 +54,7 @@ describe("MoviesListContainer", () => {
       target: { value: "true" },
     });
 
-    await waitFor(() => {
-      expect(screen.getByText("Movie Title 1")).toBeInTheDocument();
-      expect(screen.queryByText("Movie Title 2")).not.toBeInTheDocument();
-    });
+    expect(await screen.findByText("Movie Title 1")).toBeInTheDocument();
+    expect(screen.queryByText("Movie Title 2")).not.toBeInTheDocument();
   });
 });
