@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { getListMovies } from "./api/MoviesApi";
 import TableCustom from "../../components/TableCustom";
@@ -14,33 +14,42 @@ const MoviesListContainer = () => {
 
   const { t } = useTranslation("common");
 
-  useEffect(() => {
-    let isMounted = true;
-    const fetchData = async () => {
-      const result = await getListMovies(
-        page - 1,
-        winnerSelected,
-        selectedYear
-      );
-      const list = (result?.data?.content ?? []).map(
-        ({ id, year, title, winner }) => ({
-          id,
-          year,
-          title,
-          winner: t(`dashboard.listMovies.${winner}`),
-        })
-      );
-      if (isMounted) {
-        setTotalElements(result?.data?.totalElements || 0);
-        setListMovies(list);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const result = await getListMovies(0, "", "");
+  //     const list = (result?.data?.content ?? []).map(
+  //       ({ id, year, title, winner }) => ({
+  //         id,
+  //         year,
+  //         title,
+  //         winner: winner ? "Yes" : "No",
+  //       })
+  //     );
+  //     setTotalElements(result?.data?.totalElements || 0);
+  //     setListMovies(list);
+  //   };
+  //   console.log("passou aqui");
+  //   fetchData();
+  // }, []);
 
+  const fetchData = useCallback(async () => {
+    const result = await getListMovies(page - 1, winnerSelected, selectedYear);
+    const list = (result?.data?.content ?? []).map(
+      ({ id, year, title, winner }) => ({
+        id,
+        year,
+        title,
+        winner: winner ? "Yes" : "No",
+      })
+    );
+    setTotalElements(result?.data?.totalElements || 0);
+    setListMovies(list);
+  }, [page, winnerSelected, selectedYear]);
+
+  useEffect(() => {
+    console.log("passou aqui");
     fetchData();
-    return () => {
-      isMounted = false;
-    };
-  }, [page, selectedYear, winnerSelected, t]);
+  }, [fetchData]);
 
   useEffect(() => {
     setPage(1);
@@ -56,6 +65,7 @@ const MoviesListContainer = () => {
   return (
     <Fragment>
       <Box sx={{ flexGrow: 2 }} style={{ margin: "20px" }}>
+        npm
         <Grid container spacing={2}>
           <Grid item xs={12} sm={12}>
             <div className="flex-row align-center container">

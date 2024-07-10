@@ -4,4 +4,5 @@ module.exports = {
   },
   moduleFileExtensions: ["js", "jsx"],
   testEnvironment: "jsdom",
+  setupFilesAfterEnv: ["@testing-library/jest-dom"],
 };

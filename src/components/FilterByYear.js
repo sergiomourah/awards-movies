@@ -44,11 +44,11 @@ const FilterByYear = ({ onSearch }) => {
         defaultValue="Small"
         size="small"
       />
-      <Button className={classes.iconButton} onClick={handleSearch}>
+      <div className={classes.iconButton} onClick={handleSearch}>
         <IconButton aria-label="delete" size="small">
           <SearchIcon fontSize="small" />
         </IconButton>
-      </Button>
+      </div>
     </div>
   );
 };
