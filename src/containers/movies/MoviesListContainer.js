@@ -14,24 +14,6 @@ const MoviesListContainer = () => {
 
   const { t } = useTranslation("common");
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const result = await getListMovies(0, "", "");
-  //     const list = (result?.data?.content ?? []).map(
-  //       ({ id, year, title, winner }) => ({
-  //         id,
-  //         year,
-  //         title,
-  //         winner: winner ? "Yes" : "No",
-  //       })
-  //     );
-  //     setTotalElements(result?.data?.totalElements || 0);
-  //     setListMovies(list);
-  //   };
-  //   console.log("passou aqui");
-  //   fetchData();
-  // }, []);
-
   const fetchData = useCallback(async () => {
     const result = await getListMovies(page - 1, winnerSelected, selectedYear);
     const list = (result?.data?.content ?? []).map(
@@ -47,7 +29,6 @@ const MoviesListContainer = () => {
   }, [page, winnerSelected, selectedYear]);
 
   useEffect(() => {
-    console.log("passou aqui");
     fetchData();
   }, [fetchData]);
 
@@ -65,7 +46,6 @@ const MoviesListContainer = () => {
   return (
     <Fragment>
       <Box sx={{ flexGrow: 2 }} style={{ margin: "20px" }}>
-        npm
         <Grid container spacing={2}>
           <Grid item xs={12} sm={12}>
             <div className="flex-row align-center container">

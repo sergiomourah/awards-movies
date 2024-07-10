@@ -1,31 +1,8 @@
 import React, { useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import { Button } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
-import { IconButton, TextField } from "@mui/material";
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: "flex",
-    alignItems: "left",
-    justifyContent: "left",
-    margin: theme.spacing(2),
-  },
-  formControl: {
-    marginRight: theme.spacing(1),
-    width: 800,
-  },
-  iconButton: {
-    backgroundColor: theme.palette.primary.main,
-    color: theme.palette.primary.contrastText,
-    "&:hover": {
-      backgroundColor: theme.palette.primary.dark,
-    },
-  },
-}));
+import { Box, IconButton, TextField } from "@mui/material";
 
 const FilterByYear = ({ onSearch }) => {
-  const classes = useStyles();
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
 
   const handleSearch = () => {
@@ -33,23 +10,38 @@ const FilterByYear = ({ onSearch }) => {
   };
 
   return (
-    <div className={classes.root}>
+    <Box
+      sx={{
+        display: "flex",
+        alignItems: "left",
+        justifyContent: "left",
+        margin: 2,
+      }}
+    >
       <TextField
         label="Search by year"
         value={selectedYear}
-        className={classes.formControl}
+        sx={{ marginRight: 1, width: 800 }}
         onChange={(event) => setSelectedYear(event.target.value)}
         id="outlined-size-small"
         type="number"
-        defaultValue="Small"
         size="small"
       />
-      <div className={classes.iconButton} onClick={handleSearch}>
+      <Box
+        sx={{
+          backgroundColor: "primary.main",
+          color: "primary.contrastText",
+          "&:hover": {
+            backgroundColor: "primary.dark",
+          },
+        }}
+        onClick={handleSearch}
+      >
         <IconButton aria-label="delete" size="small">
           <SearchIcon fontSize="small" />
         </IconButton>
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 };
 
